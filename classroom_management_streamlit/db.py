@@ -13,7 +13,8 @@ def get_client() -> MongoClient:
         client.admin.command("ping")
     except PyMongoError as exc:
         raise RuntimeError(
-            "Unable to connect to MongoDB. Check MONGO_URI/MONGODB_ATLAS_URI, DB_NAME, and Atlas network access."
+            "Unable to connect to MongoDB. Check MONGO_URI/MONGODB_ATLAS_URI, DB_NAME, Atlas network access, and credentials. "
+            f"PyMongo error: {exc}"
         ) from exc
     return client
 
